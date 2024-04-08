@@ -25,11 +25,11 @@ public class IikanjiEngine {
     private var muteMixer = AVAudioMixerNode()
 
     private var interFormat: AVAudioFormat = AVAudioFormat(commonFormat: .pcmFormatFloat32,
-                                                           sampleRate: 48000,
+                                                           sampleRate: 44100,
                                                            channels: 1,
                                                            interleaved: false)!
     private var worldFormat: AVAudioFormat = AVAudioFormat(commonFormat: .pcmFormatFloat64,
-                                                           sampleRate: 48000,
+                                                           sampleRate: 44100,
                                                            channels: 1,
                                                            interleaved: false)!
 
@@ -70,14 +70,14 @@ public class IikanjiEngine {
         muteMixer.volume = 0
 
         engine.inputNode.installTap(onBus: 0,
-                                    bufferSize: AVAudioFrameCount(48000 * 0.4),
+                                    bufferSize: AVAudioFrameCount(44100 * 0.4),
                                     format: interFormat,
                                     block: { [weak self] (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
                                         self?.onAudio(buffer: buffer)
                                     })
 
         tapMixer2.installTap(onBus: 0,
-                             bufferSize: 4800,
+                             bufferSize: 4410,
                              format: interFormat,
                              block: { [weak self] (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
                                 let arr: [Float] = buffer.audioBufferList.pointee.mBuffers.convertFloatArray()

@@ -13,10 +13,10 @@ import WorldInApple
 
 class ContentViewModel: ObservableObject {
 
-    private let world = WorldInApple(fs: 48000, frame_period: 5, x_length: 38400)
+    private let world = WorldInApple(fs: 44100, frame_period: 5, x_length: 38400)
 
     private var iikanji: IikanjiEngine!
-    private let fs = 48000
+    private let fs = 44100
 
     private var oldBuff: AVAudioPCMBuffer?
 
